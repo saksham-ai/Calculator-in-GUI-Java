@@ -1,0 +1,70 @@
+import java.awt.*;
+import java.awt.event.*;
+public class GUI_advance_4 implements ActionListener {
+    Frame f;
+    Panel p1;
+    Panel p2;
+    Panel p3;
+    Panel p4;
+
+    TextArea t1=new TextArea();
+    TextArea t2=new TextArea();
+    TextArea t4=new TextArea();
+    Button b1=new Button("+");
+    Button b2=new Button("-");
+    Button b3=new Button("*");
+    Button b4=new Button("/");
+GUI_advance_4() {
+        f=new Frame("calculator");
+        f.setLayout(new GridLayout(4,1));
+        p1=new Panel();
+        p2=new Panel();
+        p3=new Panel();
+        p4=new Panel();
+        b1.addActionListener(this);
+        b2.addActionListener(this);
+        b3.addActionListener(this);
+        b4.addActionListener(this);
+        p1.add(t1);
+        p2.add(t2);
+        p3.add(b1);
+        p3.add(b2);
+        p3.add(b3);
+        p3.add(b4);
+        p4.add(t4);
+        f.add(p1);
+        f.add(p2);
+        f.add(p3);
+        f.add(p4);
+
+        f.setSize(300,300);
+        f.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        GUI_advance_4 a1=new GUI_advance_4();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Button bt=(Button) e.getSource();
+        int sum;
+        int a=Integer.parseInt(t1.getText());
+        int b=Integer.parseInt(t2.getText());
+        if (bt==b1){
+            sum=a+b;
+            System.out.println(sum);
+            t4.setText(""+sum);
+        }else if (bt==b2){
+            sum=a-b;
+            t4.setText(""+sum);
+        }else if (bt==b3){
+            sum=a*b;
+            t4.setText(""+sum);
+        } else if (bt==b4){
+            sum=a/b;
+            t4.setText(""+sum);
+        }
+
+    }
+}
